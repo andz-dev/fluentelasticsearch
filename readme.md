@@ -1,7 +1,31 @@
 # Introduction
 
-Using the [fluentd onbuild image](https://hub.docker.com/r/fluent/fluentd/) in this scenario (it also affects the ready to use image) inside a company network environment with SSL CA certificates causes in an SSL error.
-Because the gem package manager can't download any ressources the image will be corrupted.
+This image provides a ready to use fluentd Docker container image with the elasticsearch plugin installed.
+I use it to monitor my Docker host and the running containers and collect the logs from the containers on Grafana -> [Visit the monitoring project](https://github.com/andz-dev/dockmon)
+
+## Prerequisites
+
+- Docker installed
+- Git installed
+- Some experience with the Docker build process
+
+## Build the image
+
+Clone this repo or download the files to your local project repository. Go to the directory with a terminal of your choice and build the container image like:
+
+```sh
+$ docker build -t fluentdelasticsearch:local .
+```
+
+## Ready to use image
+
+If you don't want to build the image yourself you can also use the image provided on Docker Hub:
+- [fluentd with elasticsearch](https://hub.docker.com/r/andzdev/fluentdelasticsearch/)
+
+## The SSL certification problem
+
+Using the [fluentd onbuild image](https://hub.docker.com/r/fluent/fluentd/) in my company network environment with SSL CA certificates causes in an SSL error.
+Because the gem package manager can't download any ressources the image will be corrupted after built.
 
 So I tried some ways to import and use the certificates inside the container image to install the necessary packages based on the fluentd image and the underlying [Alpine image](https://hub.docker.com/_/alpine/).
 
@@ -97,8 +121,3 @@ fluentd:
 ```
 
 You need to copy the build source to your compose file structure - then change the build context if necessary.
-
-## Ready to use image
-
-If you don't want to build the images yourself you can also use the prebuilt images provided on Docker Hub:
-- [fluentd with elasticsearch]()
