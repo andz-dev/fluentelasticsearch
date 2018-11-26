@@ -6,8 +6,11 @@ I use it to monitor my Docker host and the running containers and collect the lo
 ## Prerequisites
 
 - Docker installed
-- Git installed
-- Some experience with the Docker build process
+- Git installed (for cloning) or
+- wget for downloading repo (example)
+- opt: Docker Compose
+- Some experience with Docker and the build process
+- Basic knowledge in using Docker Compose (for optional content)
 
 ## Build the image
 
@@ -29,7 +32,7 @@ Because the gem package manager can't download any ressources the image will be 
 
 So I tried some ways to import and use the certificates inside the container image to install the necessary packages based on the fluentd image and the underlying [Alpine image](https://hub.docker.com/_/alpine/).
 
-I also installed my company certificates on my Linux host and the package managers like `apt` and `apk` runs well on the host and the container I didn't mentioned that I will have trouble inside the container images because the SSL certifications for other package manager...
+I also installed my company certificates on my Linux host and the package managers like `apt` and `apk` runs well on the host and the container I didn't mentioned that I will have trouble inside the container images because of the SSL certifications necessary for other package managers...
 
 ## The manual steps
 
